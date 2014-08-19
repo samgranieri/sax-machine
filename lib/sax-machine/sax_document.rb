@@ -62,13 +62,13 @@ module SAXMachine
 
     def attribute(name, options = {})
       real_name = (options[:as] ||= name).to_s
-      sax_config.add_top_level_attribute(self.class.to_s, options.merge(name: name))
+      sax_config.add_top_level_attribute(self.class.to_s, options.merge(:name=> name))
       create_attr(real_name)
     end
 
     def value(name, options = {})
       real_name = (options[:as] ||= name).to_s
-      sax_config.add_top_level_element_value(self.class.to_s, options.merge(name: name))
+      sax_config.add_top_level_element_value(self.class.to_s, options.merge(:name=> name))
       create_attr(real_name)
     end
 
@@ -109,7 +109,7 @@ module SAXMachine
             #{options[:as]} << value
           end
         SRC
-        sax_config.add_top_level_element(name, options.merge(collection: true))
+        sax_config.add_top_level_element(name, options.merge(:collection=> true))
       end
 
       if !method_defined?(options[:as].to_s)
