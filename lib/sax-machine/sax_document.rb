@@ -12,9 +12,9 @@ module SAXMachine
         SAXOxHandler.new(self, on_error, on_warning),
         StringIO.new(xml_text),
         {
-          symbolize: false,
-          convert_special: true,
-          skip: :skip_return,
+          :symbolize=> false,
+          :convert_special=> true,
+          :skip=> :skip_return,
         }
       )
     else
